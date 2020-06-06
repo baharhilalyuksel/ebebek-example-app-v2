@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.container-fluid > .row {
+	max-width: 1000px;
+	margin: auto;
+}
+
+.cartLine-container {
+	margin-bottom: 2em;
+	border-bottom: 1px solid gray;
+	padding-bottom: 1em;
+}
+
+.basket-empty {
+	text-align: center;
+}
+
+.cartLine-quantity > * {
+	float: left;
+}
+
+.cartLine-quantity .quantity {
+	margin: 0 0.2em;
+}
+
+.cartLine-quantity .decrementButton button, .cartLine-quantity .incrementButton button {
+	color: white;
+	font-weight: bold;
+	background-color: orange;
+}
+
+.cart-totalPrice > *{
+	float: right;
+	margin-bottom: 1em;
+}
+
+.gotoproducts-button {
+	width: 100%;
+	clear: both;
+}
+
+.gotoproducts-button a {
+	float: left;
+    color: white;
+    background-color: orange;
+    display: block;
+    height: 2em;
+    text-align: center;
+    width: 100%;       
+    text-decoration: none; 
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-top: 0.25em;
+    margin-bottom: 2em
+}
