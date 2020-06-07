@@ -8,10 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.ebebek.model.Cart;
-import com.example.ebebek.model.ChangeProductQuantityResultBean;
 import com.example.ebebek.service.ECommerceService;
 import com.example.ebebek.utils.SessionUtil;
 
@@ -49,24 +50,18 @@ public class ECommerceController {
 	
 	@PostMapping(value = "increment-product-quantity")
 	@ResponseBody
-	public ChangeProductQuantityResultBean incrementProductQuantity(HttpServletRequest request) {
-		int productId = Integer.parseInt(request.getParameter("productId"));
+	public ModelAndView incrementProductQuantity(@RequestParam Integer productId, HttpServletRequest request) {
 		Cart cart = SessionUtil.getCartInSession(request);
 		eCommerceService.incrementProductQuantity(cart, productId);
-		ChangeProductQuantityResultBean resultBean = new ChangeProductQuantityResultBean(cart, 
-				eCommerceService.getCartLineByProductId(cart, productId));
-		return resultBean;
+		return new ModelAndView("redirect:/cart");
 	}
 	
 	@PostMapping(value = "decrement-product-quantity")
 	@ResponseBody
-	public ChangeProductQuantityResultBean decrementProductQuantity(HttpServletRequest request) {
-		int productId = Integer.parseInt(request.getParameter("productId"));
+	public ModelAndView decrementProductQuantity(@RequestParam Integer productId, HttpServletRequest request) {
 		Cart cart = SessionUtil.getCartInSession(request);
 		eCommerceService.decrementProductQuantity(cart, productId);
-		ChangeProductQuantityResultBean resultBean = new ChangeProductQuantityResultBean(cart, 
-				eCommerceService.getCartLineByProductId(cart, productId));
-		return resultBean;
+		return new ModelAndView("redirect:/cart");
 	}
 
 }

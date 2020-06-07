@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <html>
@@ -9,7 +10,7 @@
 	<script type="text/javascript">
 	function addToCart(productId) {
 		$.post( "add-product-to-cart", {productId:productId}, function( data ) {
-			  alert( "Ürün sepete eklendi.");
+			  alert( "ÃœrÃ¼n sepete eklendi.");
 		});
 	}	
 	</script>

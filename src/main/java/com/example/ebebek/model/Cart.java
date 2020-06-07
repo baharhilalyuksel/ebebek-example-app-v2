@@ -1,12 +1,13 @@
 package com.example.ebebek.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
 	
 	List<CartLine> cartLines;
-	Double totalPrice;
+	BigDecimal totalPrice;
 
 	public Cart() {
 		cartLines = new ArrayList<CartLine>();
@@ -29,14 +30,14 @@ public class Cart {
 		return cartLines;
 	}
 	
-	public Double getTotalPrice() {
+	public BigDecimal getTotalPrice() {
 		return totalPrice;
 	}
 
 	public void calculateTotalPrice() {
-		totalPrice = 0.0;
+		totalPrice = new BigDecimal(0);
 		for (CartLine cartLine : cartLines) {
-			totalPrice += cartLine.getTotalPrice();
+			totalPrice = totalPrice.add(cartLine.getTotalPrice());
 		}
 	}
 

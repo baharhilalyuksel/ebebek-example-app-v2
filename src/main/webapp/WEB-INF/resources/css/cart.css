@@ -23,7 +23,7 @@
 	margin: 0 0.2em;
 }
 
-.cartLine-quantity .decrementButton button, .cartLine-quantity .incrementButton button {
+.cartLine-quantity .decrementButton input, .cartLine-quantity .incrementButton input {
 	color: white;
 	font-weight: bold;
 	background-color: orange;

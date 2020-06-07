@@ -1,10 +1,12 @@
 package com.example.ebebek.model;
 
+import java.math.BigDecimal;
+
 public class CartLine {
 	
 	Product product;
 	Integer quantity;
-	Double totalPrice;
+	BigDecimal totalPrice;
 	
 	public CartLine() {
 	}
@@ -12,7 +14,7 @@ public class CartLine {
 	public CartLine(Product product, Integer quantity) {
 		this.product = product;
 		this.quantity = quantity;
-		totalPrice = this.product.getPrice()*this.quantity;
+		totalPrice = this.product.getPrice().multiply(new BigDecimal(this.quantity));
 	}
 
 	public Product getProduct() {
@@ -29,25 +31,25 @@ public class CartLine {
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
-		totalPrice = this.product.getPrice()*this.quantity;
+		totalPrice = this.product.getPrice().multiply(new BigDecimal(this.quantity));
 	}
 
-	public Double getTotalPrice() {
+	public BigDecimal getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(Double totalPrice) {
+	public void setTotalPrice(BigDecimal totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
 	public void incrementQuantity() {
 		quantity++;
-		totalPrice = this.product.getPrice()*this.quantity;
+		totalPrice = this.product.getPrice().multiply(new BigDecimal(this.quantity));
 	}
 	
 	public void decrementQuantity() {
 		quantity--;
-		totalPrice = this.product.getPrice()*this.quantity;
+		totalPrice = this.product.getPrice().multiply(new BigDecimal(this.quantity));
 	}
 
 }

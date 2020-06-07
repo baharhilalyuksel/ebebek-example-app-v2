@@ -7,39 +7,6 @@
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/list-products.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/cart.css" />">
-	<script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	
-	function increment(productId) {
-		$.post( "increment-product-quantity", {productId:productId}, function( data ) {
-			  $("#cartLine-"+productId).find(".quantity").text(data.cartLine.quantity);
-			  lineTotalPrice = parseFloat(data.cartLine.totalPrice).toFixed(2);
-			  $("#cartLine-"+productId).find(".cartLine-totalPrice span").text(lineTotalPrice);
-			  cartTotalPrice = parseFloat(data.cart.totalPrice).toFixed(2);
-			  $(".cart-totalPrice span").text("Genel Toplam : " + cartTotalPrice);
-		});
-	}
-	
-	function decrement(productId) {
-		$.post( "decrement-product-quantity", {productId:productId}, function( data ) {
-			if(data.cartLine == null) {
-				$("#cartLine-"+productId).remove();
-				if (data.cart.cartLines.length == 0) {
-					$(".list-cartLines .title").html("<h2 class='basket-empty' >Sepetiniz boş</h2>");
-					$(".cart-totalPrice").remove();
-				}
-			} else {
-				$("#cartLine-"+productId).find(".quantity").text(data.cartLine.quantity);
-				lineTotalPrice = parseFloat(data.cartLine.totalPrice).toFixed(2);
-				$("#cartLine-"+productId).find(".cartLine-totalPrice span").text(lineTotalPrice);				
-			}
-			cartTotalPrice = parseFloat(data.cart.totalPrice).toFixed(2);
-			$(".cart-totalPrice span").text("Genel Toplam : " + cartTotalPrice);
-		});
-	}
-
-
-	</script>
 </head>
 
 <body>
@@ -105,11 +72,17 @@
 						</div>
 						<div class="col-4 col-sm-3 offset-1 cartLine-quantity">
 							<div class="decrementButton">
-								<button type="button" onclick="javascript:decrement(${cartLine.product.id})" class="btn btn-sm">-</button>
+								<form action="${pageContext.request.contextPath}/decrement-product-quantity" method="post">
+									<input type="submit" value="-" />
+									<input type="hidden" value="${cartLine.product.id}" name="productId" >
+								</form>
 							</div>
 							<span class="quantity" >${cartLine.quantity}</span>
 							<div class="incrementButton">
-								<button type="button" onclick="javascript:increment(${cartLine.product.id})" class="btn btn-sm">+</button>
+								<form action="${pageContext.request.contextPath}/increment-product-quantity" method="post">
+									<input type="submit" value="+" />
+									<input type="hidden" value="${cartLine.product.id}" name="productId" >
+								</form>
 							</div>							
 						</div>
 						<div class="col-1 cartLine-totalPrice">

@@ -1,5 +1,6 @@
 package com.example.ebebek.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +18,14 @@ public class ECommerceServiceImpl implements ECommerceService {
 	public ECommerceServiceImpl() {
 		products = new ArrayList<Product>();
 		
-		products.add(new Product(1, "Product 1", 29.99, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
-		products.add(new Product(2, "Product 2", 48.50, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
-		products.add(new Product(3, "Product 3", 120.0, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
-		products.add(new Product(4, "Product 4", 4.96, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
-		products.add(new Product(5, "Product 5", 50.0, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
-		products.add(new Product(6, "Product 6", 599.0, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
-		products.add(new Product(7, "Product 7", 800.0, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
-		products.add(new Product(8, "Product 8", 8.25, "https://cdn.e-bebek.com/y.ebebek/logo.svg"));	
+		products.add(new Product(1, "Product 1", new BigDecimal("29.99"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
+		products.add(new Product(2, "Product 2", new BigDecimal("48.50"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
+		products.add(new Product(3, "Product 3", new BigDecimal("120.0"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
+		products.add(new Product(4, "Product 4", new BigDecimal("4.96"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
+		products.add(new Product(5, "Product 5", new BigDecimal("50.0"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
+		products.add(new Product(6, "Product 6", new BigDecimal("599.0"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
+		products.add(new Product(7, "Product 7", new BigDecimal("800.0"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));
+		products.add(new Product(8, "Product 8", new BigDecimal("8.25"), "https://cdn.e-bebek.com/y.ebebek/logo.svg"));	
 	}
 
 	@Override

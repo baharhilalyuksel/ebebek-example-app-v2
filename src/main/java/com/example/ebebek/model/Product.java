@@ -1,16 +1,18 @@
 package com.example.ebebek.model;
 
+import java.math.BigDecimal;
+
 public class Product {
 	
 	private Integer id;
 	private String name;
-	private Double price;
+	private BigDecimal price;
 	private String imageUrl;
 	
 	public Product() {
 	}
 
-	public Product(Integer id, String name, Double price, String imageUrl) {
+	public Product(Integer id, String name, BigDecimal price, String imageUrl) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -33,11 +35,11 @@ public class Product {
 		this.name = name;
 	}
 	
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
